@@ -10,7 +10,28 @@ import About from "./components/About";
 function App() {
   const initialState = JSON.parse(window.localStorage.getItem("task"))
   const [showAddTask, setShowAddTask] = useState(false);
-  const [tasks, setTasks] = useState(initialState)
+  const [tasks, setTasks] = useState(initialState||
+    [
+      {
+        id: 1,
+        text: "Kill Thanos",
+        day: "3rd March at 10:00am",
+        reminder: true
+      },
+      {
+        id: 2,
+        text: "Save the world",
+        day: "7th January at 12:00am",
+        reminder: true
+      },
+      {
+        id: 3,
+        text: "make a sandwich",
+        day: "1st July at 9:00pm",
+        reminder: false
+      }
+    ]
+  )
 
   useEffect(() => {
     window.localStorage.setItem("task", JSON.stringify(tasks));
@@ -23,9 +44,6 @@ function App() {
       const id = Math.floor(Math.random() * 10000) + 1
       const newTask = {id, ...task}
       setTasks([...tasks, newTask])
-      if(newTask >= 10) {
-        return;
-      }
     }
 
       // Toggle task
