@@ -8,7 +8,7 @@ const AddTask = ({onAdd}) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if(!text) {
-    alert("Please add a task")
+    alert("Please add a list")
     return
     }
     onAdd({text, day, reminder})
@@ -21,8 +21,8 @@ const AddTask = ({onAdd}) => {
     <div>
       <form className="add-form" onSubmit={onSubmit}>
         <div className="form-control">
-          <label>Task</label>
-          <input type="text" placeholder="Add task" value={text} onChange={(e) => setText(
+          <label>List</label>
+          <input type="text" placeholder="Add list" value={text} onChange={(e) => setText(
             e.target.value)}/>
         </div>
         <div className="form-control">
@@ -35,7 +35,7 @@ const AddTask = ({onAdd}) => {
           <input type="checkbox" value={reminder} checked={reminder}
           onChange={(e) => setReminder(e.currentTarget.checked)}/>
         </div>
-        <input type="submit" value="Save Task" className="btn btn-block"/>
+        <input type="submit" value="Save List" className="btn btn-block"/>
       </form>
     </div>
   )
